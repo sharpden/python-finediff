@@ -6,3 +6,9 @@ import finediff
 finediff.FineDiff('abcdef', 'badefo').renderDiffToHTML()
 ```
 `'<del>a</del>b<del>c</del><ins>a</ins>def<ins>o</ins>'`
+
+### Installation
+
+```bash
+pip install https://github.com/sharpden/python-finediff/tarball/master
+```
