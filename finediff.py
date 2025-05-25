@@ -191,7 +191,7 @@ class FineDiff:
                 elif to_segment_length:
                     result[from_segment_start * 4] = FineDiffInsertOp(to_text[to_segment_start : to_segment_start + to_segment_length])
                 continue
-            
+
             best_copy_length = 0
             from_base_fragment_index = from_segment_start
             cached_array_keys_for_current_segment = {}
@@ -329,7 +329,11 @@ class FineDiff:
 
     @staticmethod
     def renderDiffToHTMLFromOpcode(opcode, from_, from_offset, from_len):
-        import cgi
+        import sys
+        if sys.version_info.major == 2:
+            import cgi
+        elif sys.version_info.major == 3:
+            import html as cgi
         if opcode == 'c':
             return cgi.escape(from_[from_offset : from_offset + from_len])
         elif opcode == 'd':
